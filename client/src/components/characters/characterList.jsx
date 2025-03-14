@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import CharacterCard from '/CharacterCard';
-import CharacterForm from '/CharacterForm';
+import CharacterCard from '../characters/characterCard';
+import CharacterForm from '../characters/characterForm';
 import characterService from '../../services/characterService';
-import './character.css';
 
 const CharacterList = ({ currentUser }) => {
   const [characters, setCharacters] = useState([]);

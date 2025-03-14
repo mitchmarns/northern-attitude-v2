@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Modal from './common/Modal';
+import Modal from '../common/modal';
 
 const CharacterForm = ({ character, currentUser, onSave, onClose }) => {
   const [formData, setFormData] = useState({
