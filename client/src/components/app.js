@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Header from './common/Header';
+import Header from '/common/Header';
 import CharacterList from '/characters/CharacterList';
-import SceneList from './scenes/SceneList';
-import SettingsPanel from './settings/SettingsPanel';
 
 /**
  * Main App component

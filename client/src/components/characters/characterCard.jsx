@@ -1,21 +1,8 @@
 import React from 'react';
 
-/**
- * Character card component
- * Displays a single character with actions
- * 
- * @param {Object} props - Component props
- * @param {Object} props.character - Character data
- * @param {Function} props.onEdit - Edit handler
- * @param {Function} props.onDelete - Delete handler
- */
 const CharacterCard = ({ character, onEdit, onDelete }) => {
   const { name, portrait, age, description } = character;
   
-  /**
-   * Handle image error by replacing with default
-   * @param {Object} e - Event object
-   */
   const handleImageError = (e) => {
     e.target.src = '/assets/img/default-portrait.jpg';
   };

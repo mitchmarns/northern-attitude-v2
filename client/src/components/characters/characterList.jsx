@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import CharacterCard from '/CharacterCard';
+import CharacterForm from '/CharacterForm';
 import characterService from '../../services/characterService';
-import CharacterCard from './CharacterCard';
-import CharacterForm from './CharacterForm';
+import './character.css';
 
-/**
- * Character list component
- * Displays a list of characters and allows creation of new ones
- */
 const CharacterList = ({ currentUser }) => {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,16 +11,11 @@ const CharacterList = ({ currentUser }) => {
   const [showModal, setShowModal] = useState(false);
   const [currentCharacter, setCurrentCharacter] = useState(null);
 
-  /**
-   * Load characters when component mounts or currentUser changes
-   */
+  // Load characters when component mounts or currentUser changes
   useEffect(() => {
     loadCharacters();
   }, [currentUser]);
 
-  /**
-   * Load characters from the API
-   */
   const loadCharacters = async () => {
     try {
       setLoading(true);
@@ -38,27 +30,16 @@ const CharacterList = ({ currentUser }) => {
     }
   };
 
-  /**
-   * Open the modal for creating a new character
-   */
   const handleAddCharacter = () => {
     setCurrentCharacter(null);
     setShowModal(true);
   };
 
-  /**
-   * Open the modal for editing an existing character
-   * @param {Object} character - Character to edit
-   */
   const handleEditCharacter = (character) => {
     setCurrentCharacter(character);
     setShowModal(true);
   };
 
-  /**
-   * Delete a character
-   * @param {number} id - Character ID
-   */
   const handleDeleteCharacter = async (id) => {
     if (!window.confirm('Are you sure you want to delete this character?')) {
       return;
@@ -66,18 +47,13 @@ const CharacterList = ({ currentUser }) => {
     
     try {
       await characterService.deleteCharacter(id);
-      // Reload the character list
-      loadCharacters();
+      await loadCharacters();
     } catch (err) {
       setError('Failed to delete character. Please try again.');
       console.error('Error deleting character:', err);
     }
   };
 
-  /**
-   * Save a character (create or update)
-   * @param {Object} characterData - Character data to save
-   */
   const handleSaveCharacter = async (characterData) => {
     try {
       if (currentCharacter) {
@@ -91,9 +67,8 @@ const CharacterList = ({ currentUser }) => {
         await characterService.createCharacter(characterData);
       }
       
-      // Close modal and reload characters
       setShowModal(false);
-      loadCharacters();
+      await loadCharacters();
     } catch (err) {
       setError('Failed to save character. Please try again.');
       console.error('Error saving character:', err);

@@ -1,16 +1,6 @@
 import React from 'react';
 
-/**
- * Navigation component
- * 
- * @param {Object} props - Component props
- * @param {string} props.activeSection - Current active section
- * @param {Function} props.onSectionChange - Section change handler
- */
 const Navigation = ({ activeSection, onSectionChange }) => {
-  /**
-   * Navigation items configuration
-   */
   const navItems = [
     { id: 'characters', label: 'Characters' },
     { id: 'scenes', label: 'Scenes' },

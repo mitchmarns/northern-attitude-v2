@@ -1,6 +1,3 @@
-/**
- * Base API service for making HTTP requests
- */
 class ApiService {
   /**
    * Base URL for API requests
@@ -103,10 +100,7 @@ class ApiService {
   async delete(endpoint) {
     try {
       const response = await fetch(`${this.baseUrl}${endpoint}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        method: 'DELETE'
       });
       
       if (!response.ok) {
@@ -121,3 +115,5 @@ class ApiService {
     }
   }
 }
+
+export default ApiService;

@@ -1,12 +1,22 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from '/components/App';
+import './index.css';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// client/src/components/App.jsx
 import React, { useState, useEffect } from 'react';
 import Header from './common/Header';
 import CharacterList from './characters/CharacterList';
 import SceneList from './scenes/SceneList';
 import SettingsPanel from './settings/SettingsPanel';
 
-/**
- * Main App component
- */
 const App = () => {
   // App state
   const [activeSection, setActiveSection] = useState('characters');
@@ -39,10 +49,7 @@ const App = () => {
     applyFontSize(fontSize);
   }, [fontSize]);
 
-  /**
-   * Apply font size to body
-   * @param {string} size - Font size (small, medium, large)
-   */
+  // Apply font size to body
   const applyFontSize = (size) => {
     document.body.style.fontSize = 
       size === 'small' ? '0.9rem' : 
@@ -50,26 +57,17 @@ const App = () => {
       '1rem';
   };
 
-  /**
-   * Handle section change
-   * @param {string} section - Section name
-   */
+  // Handle section change
   const handleSectionChange = (section) => {
     setActiveSection(section);
   };
 
-  /**
-   * Handle user change
-   * @param {string} userId - User ID
-   */
+  // Handle user change
   const handleUserChange = (userId) => {
     setCurrentUser(userId);
   };
 
-  /**
-   * Handle font size change
-   * @param {string} size - Font size
-   */
+  // Handle font size change
   const handleFontSizeChange = (size) => {
     setFontSize(size);
   };

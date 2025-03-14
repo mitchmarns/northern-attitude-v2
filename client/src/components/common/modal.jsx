@@ -1,14 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 
-/**
- * Reusable modal component
- * 
- * @param {Object} props - Component props
- * @param {string} props.title - Modal title
- * @param {React.ReactNode} props.children - Modal content
- * @param {Function} props.onClose - Close handler
- * @param {boolean} props.fullscreen - Whether the modal should be fullscreen
- */
 const Modal = ({ title, children, onClose, fullscreen = false }) => {
   const modalRef = useRef(null);
 
